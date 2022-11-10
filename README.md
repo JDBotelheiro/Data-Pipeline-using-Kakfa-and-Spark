@@ -18,9 +18,9 @@ The Kafka distributed messaging system will be the subject of this learning proj
 
 > python generate_data.py 
 
-For every second raw data is sent to the end point 'http://0.0.0.0:3030/FoodOrderingApp'
+For every second raw data is sent to the endpoint 'http://0.0.0.0:3030/FoodOrderingApp'
 
-#### Step 2: Start the server, create a topic and push the data to kafka
+#### Step 2: Start the server, create a topic and push the data to Kafka
 
 Start ZooKeeper server - used apache-zookeeper-3.8.0 version
 > bin/zkServer.sh start conf/zoo_sample.cfg
@@ -31,10 +31,10 @@ Start Kafka server -used kafka-3.3.1 version
 Create a topic named "RawData"
 > bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic RawData --from-beginning
 
-Push data from APi to Kafka Topic
+Push data from API to Kafka Topic
 > python push_data_to_kafka.py
 
-#### Step 3 & 4: Store the data into offline feature store and push the clean data into new Kafka Topic
+#### Step 3 & 4: Store the data in offline feature store and push the clean data into the new Kafka Topic
 
 > python data_preprocessing.py
 
@@ -42,10 +42,9 @@ Push data from APi to Kafka Topic
 <!-- ROADMAP -->
 ## RoadMap
 
- * [ ] Containeraized each step
- * [ ] Add anonymization api while doing the data preprocessing
- * [ ] Use the clean data from Kafka for a live dashboard (simulate restaurant when reciving the orders) or add a machine learning using this data
+ * [ ] Containerized each step
+ * [ ] Add anonymization API while doing the data preprocessing
+ * [ ] Use the clean data from Kafka for a live dashboard (simulate the restaurant when receiving the orders) or add machine learning using this data
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-

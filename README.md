@@ -11,7 +11,7 @@
 The Kafka distributed messaging system will be the subject of this learning project. A publish-subscribe architecture was developed, where consumers read messages coming from topics that are subscribed and messages are sent via producers. This project involved developing an API that simulates a food ordering system.
 
 <a>
-  <img src="src/img/diagram.png" alt="Logo" width="220" height="80">
+  <img src="src/img/diagram.png" alt="diagram">
 </a>
 
 #### Step 1: Initialize API that will feed the pipeline

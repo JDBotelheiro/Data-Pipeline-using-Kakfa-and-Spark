@@ -35,7 +35,7 @@ def main():
     spark_context = spark_session._sc
     spark_context.setLogLevel("WARN")
     # Start Kafka consumer to retrive the raw data
-    consumer = KafkaConsumer('RawSensorData', auto_offset_reset='earliest',bootstrap_servers=['localhost:9092'], consumer_timeout_ms=1000)
+    consumer = KafkaConsumer('RawData', auto_offset_reset='earliest',bootstrap_servers=['localhost:9092'], consumer_timeout_ms=1000)
     # Start kafka producer to send the preprocessed data
     producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
     # Load feature store
@@ -43,14 +43,14 @@ def main():
     for msg in consumer:
         if msg.value.decode("utf-8")!="Error in Connection":
             # Define data structure and peform some preprocessing
-            msg = msg.value.decode("utf-8").split(";")
+            msg = msg.value.decode("utf-8").split(",")
             data = FeaturePreprocess().structureData(sc=spark_context, msg=msg)
             if timestamp_exist(data['TimeStamp'], collection) == False:            
                 #push data to feature store
                 collection.insert(data)
-                producer.send("CleanSensorData", json.dumps(data, default=json_util.default).encode('utf-8'))
+                producer.send("CleanData", json.dumps(data, default=json_util.default).encode('utf-8'))
             
-            #print(data)
+            print(data)
 
 if __name__ == "__main__":
     main()

@@ -29,7 +29,7 @@ def dataToKafka(url):
 
     while True:
         msg =  appDataStream(url)
-        producer.send("RawData", msg.encode('utf-8'), )
+        producer.send("RawData", msg.encode('utf-8'))
         time.sleep(1)
         
 if __name__ == "__main__":

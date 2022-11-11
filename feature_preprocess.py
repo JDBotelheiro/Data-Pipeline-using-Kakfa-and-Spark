@@ -28,7 +28,7 @@ class FeaturePreprocess():
     
     def priceColumn(self):
         try:
-            self.data["Price"] = int(rdd.collect()[3])
+            self.data["Price"] = float(rdd.collect()[3])
             if (((self.data["Price"])>99) | ((self.data["Price"])<0)):
                 self.data["Price"] = None
         except Exception as error:
@@ -46,13 +46,13 @@ class FeaturePreprocess():
     
     def latitudeColumn(self):
         try:
-            self.data["Latitude"] = int(rdd.collect()[5])
+            self.data["Latitude"] = float(rdd.collect()[5])
         except Exception as error:
             self.data["Latitude"] = None
     
     def longitudeColumn(self):
         try:
-            self.data["Longitude"] = int(rdd.collect()[6])
+            self.data["Longitude"] = float(rdd.collect()[6])
         except Exception as error:
             self.data["Longitude"] = None
                  
